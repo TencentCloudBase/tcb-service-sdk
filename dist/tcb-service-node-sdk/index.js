@@ -129,7 +129,7 @@ var SMS = (function (_super) {
     }
     SMS.prototype.init = function () {
         return __awaiter(this, void 0, Promise, function () {
-            var _a, SecretID, SecretKey, smsClient, result, data, e_1;
+            var _a, SecretID, SecretKey, smsClient, data, resData, e_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -143,17 +143,17 @@ var SMS = (function (_super) {
                                 data: this.data
                             })];
                     case 2:
-                        result = _b.sent();
-                        data = JSON.parse(result);
+                        data = _b.sent();
+                        resData = data.resData;
                         return [2, {
-                                code: 0,
-                                message: 'success',
-                                data: data,
+                                code: resData.result,
+                                message: !resData.result ? 'success' : resData.errmsg,
+                                data: resData,
                             }];
                     case 3:
                         e_1 = _b.sent();
                         return [2, {
-                                code: e_1.code,
+                                code: e_1.code || 1000,
                                 message: e_1.message
                             }];
                     case 4: return [2];
@@ -169,8 +169,8 @@ var TcbService = (function () {
     function TcbService(_a) {
         var _b = _a.SecretID, SecretID = _b === void 0 ? null : _b, _c = _a.SecretKey, SecretKey = _c === void 0 ? null : _c;
         this.cloud = cloud;
-        this.SecretID = process.env.TENCENTCLOUD_SECRETID || SecretID;
-        this.SecretKey = process.env.TENCENTCLOUD_SECRETKEY || SecretKey;
+        this.SecretID = SecretID || process.env.TENCENTCLOUD_SECRETID;
+        this.SecretKey = SecretKey || process.env.TENCENTCLOUD_SECRETKEY;
     }
     TcbService.prototype.callService = function (_a) {
         var service = _a.service, _b = _a.version, version = _b === void 0 ? 'v1.0.0' : _b, action = _a.action, data = _a.data;
@@ -183,7 +183,7 @@ var TcbService = (function () {
                 return ai.init();
             }
             case 'sms': {
-                var sms = new SMS(this.cloud, action, data, {
+                var sms = new SMS(this.cloud, version, action, data, {
                     SecretID: this.SecretID,
                     SecretKey: this.SecretKey
                 });

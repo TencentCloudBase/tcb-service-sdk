@@ -1,0 +1,51 @@
+{
+  "name": "tcb-service-sdk",
+  "version": "0.0.4",
+  "description": "tcb js sdk for AI service",
+  "main": "dist/tcb-service-node-sdk/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "rollup -c ./tools/rollup.base.js --environment INCLUDE_DEPS,BUILD:production",
+    "prepublish": "npm run dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/TencentCloudBase/tcb-service-sdk.git"
+  },
+  "keywords": [
+    "tencent",
+    "cloud",
+    "base",
+    "javascript",
+    "sdk",
+    "for",
+    "AI",
+    "service"
+  ],
+  "author": "heyli",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.18",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-alloy": "^1.4.2",
+    "eslint-plugin-typescript": "^0.14.0",
+    "jest": "^23.6.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "ts-jest": "^23.10.5",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.3",
+    "typescript-eslint-parser": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=8.6.0"
+  },
+  "dependencies": {
+    "image-node-sdk": "^2.0.0-beta.4",
+    "sms-node-sdk": "0.0.3",
+    "tcb-admin-node": "^1.4.3"
+  }
+}

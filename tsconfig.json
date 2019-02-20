@@ -1,0 +1,35 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "allowJs": false,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false,
+      "charset": "utf8",
+      "declaration": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "importHelpers": false,
+      "module": "node",
+      "noEmitOnError": false,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": false,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "pretty": true,
+      "removeComments": true,
+      "stripInternal": true,
+      "target": "ES5",
+      "moduleResolution": "node",
+      "lib": [
+        "ES2015"
+      ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test"
+  ]
+}

@@ -10,7 +10,7 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
       "importHelpers": false,
-      "module": "node",
+      "module": "es2015",
       "noEmitOnError": false,
       "noFallthroughCasesInSwitch": true,
       "noImplicitAny": false,

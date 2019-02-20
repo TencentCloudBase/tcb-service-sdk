@@ -1,3 +1,4 @@
 node_modules
 cloud/functions/**/*/config/index.js
 cloud/functions/**/*/config/private_key
+test/config/index.js

@@ -14,8 +14,8 @@ export default class TcbService {
 
     constructor({ SecretID = null, SecretKey = null }) {
         this.cloud = cloud;
-        this.SecretID = process.env.TENCENTCLOUD_SECRETID || SecretID;
-        this.SecretKey = process.env.TENCENTCLOUD_SECRETKEY || SecretKey;
+        this.SecretID = SecretID || process.env.TENCENTCLOUD_SECRETID;
+        this.SecretKey = SecretKey || process.env.TENCENTCLOUD_SECRETKEY;
     }
 
     callService({ service, version = 'v1.0.0', action, data }: Options): Promise<ReturnValue> {
@@ -32,7 +32,7 @@ export default class TcbService {
             //     return video.init();
             // }
             case 'sms': {
-                const sms = new SMS(this.cloud, action, data, {
+                const sms = new SMS(this.cloud, version, action, data, {
                     SecretID: this.SecretID,
                     SecretKey: this.SecretKey
                 });

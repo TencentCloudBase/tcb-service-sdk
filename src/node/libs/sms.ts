@@ -12,24 +12,25 @@ export default class SMS extends Base {
             SecretID,
             SecretKey
         } = this.options;
-    
+
         try {
             let smsClient = new SmsClient({ AppID: SecretID, AppKey: SecretKey });
-            let result = await smsClient.init({
+            let data = await smsClient.init({
                 action: this.action,
                 data: this.data
             });
-            let data = JSON.parse(result);
+
+            let resData = data.resData;
 
             return {
-                code: 0,
-                message: 'success',
-                data,
+                code: resData.result,
+                message: !resData.result ? 'success' : resData.errmsg,
+                data: resData,
             };
         }
         catch (e) {
             return {
-                code: e.code,
+                code: e.code || 1000,
                 message: e.message
             };
         }

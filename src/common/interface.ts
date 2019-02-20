@@ -2,7 +2,7 @@
 export interface Options {
     service: string;
     action: string;
-    version: string;
+    version?: string;
     data: any;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "tcb-service-sdk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "tcb js sdk for AI service",
   "main": "dist/tcb-service-node-sdk/index.js",
   "scripts": {
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "image-node-sdk": "^2.0.0-beta.4",
-    "sms-node-sdk": "0.0.3",
+    "qcloudsms_js": "^0.1.1",
     "tcb-admin-node": "^1.4.3"
   },
   "jest": {

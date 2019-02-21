@@ -4,7 +4,7 @@ import {
 } from '../../common/interface';
 const {
     SmsClient
-} = require('sms-node-sdk');
+} = require('./sms/index');
 
 export default class SMS extends Base {
     public async init(): Promise<ReturnValue> {

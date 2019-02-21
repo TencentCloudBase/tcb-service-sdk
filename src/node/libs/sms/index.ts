@@ -1,10 +1,8 @@
-import Base from './base';
+const SmsClient = require('./libs/BaseService');
+import Base from '../base';
 import {
     ReturnValue
-} from '../../common/interface';
-const {
-    SmsClient
-} = require('./sms/index');
+} from '../../../common/interface';
 
 export default class SMS extends Base {
     public async init(): Promise<ReturnValue> {

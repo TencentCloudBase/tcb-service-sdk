@@ -3,7 +3,7 @@ export interface Options {
     service: string;
     action: string;
     version?: string;
-    data: any;
+    data?: any;
 }
 
 export interface ReturnValue {

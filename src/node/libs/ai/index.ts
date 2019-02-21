@@ -1,10 +1,8 @@
-import Base from './base';
+const ImageClient = require('./libs/BaseService');
+import Base from '../base';
 import {
     ReturnValue
-} from '../../common/interface';
-const {
-    ImageClient
-} = require('image-node-sdk');
+} from '../../../common/interface';
 
 export default class AI extends Base {
     public async init(): Promise<ReturnValue> {

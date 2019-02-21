@@ -2,3 +2,5 @@ node_modules
 cloud/functions/**/*/config/index.js
 cloud/functions/**/*/config/private_key
 test/config/index.js
+test/config/faceIdCardLiveDetectFour.mp4
+test/config/face.jpg

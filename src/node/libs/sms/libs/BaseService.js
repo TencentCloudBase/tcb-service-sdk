@@ -1,6 +1,5 @@
 const QcloudSms = require('qcloudsms_js');
 
-
 class BaseService {
 
     constructor({ AppID, AppKey } = {}) {
@@ -360,7 +359,6 @@ class BaseService {
             });
         });
     }
-
 }
 
 module.exports = BaseService;

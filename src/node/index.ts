@@ -12,7 +12,7 @@ export default class TcbService {
     private SecretID: string;
     private SecretKey: string;
 
-    constructor({ SecretID = null, SecretKey = null }) {
+    constructor({ SecretID = null, SecretKey = null } = {}) {
         this.cloud = cloud;
         this.SecretID = SecretID || process.env.TENCENTCLOUD_SECRETID;
         this.SecretKey = SecretKey || process.env.TENCENTCLOUD_SECRETKEY;

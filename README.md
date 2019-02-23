@@ -19,7 +19,7 @@ import TcbService from '路径/tcb-service-sdk/index'
 let tcbService = new TcbService()
 tcbService.callService({
     service: 'video',
-    action: 'webrtcroom-enter-room',
+    action: 'WebrtcEnterRoom',
     data: {
         roomID: '1234' 
     }
@@ -39,7 +39,7 @@ let tcbService = new TcbService({
 })
 tcbService.callService({
     service: 'video',
-    action: 'webrtcroom-enter-room',
+    action: 'WebrtcEnterRoom',
     data: {
         roomID: '1234' 
     }

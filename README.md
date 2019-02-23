@@ -16,7 +16,7 @@
 
 ```js
 import TcbService from '路径/tcb-service-sdk/index'
-let tcbService = new TcbService(wx.cloud)
+let tcbService = new TcbService()
 tcbService.callService({
     service: 'video',
     action: 'webrtcroom-enter-room',
@@ -26,24 +26,7 @@ tcbService.callService({
 })
 ```
 
-
-### JavaScript
-1. 使用该命令安装依赖： `npm i --save tcb-service-sdk`
-2. 初始化
-
-```js
-import TcbService from 'tcb-service-sdk/dist/tcb-service-js-sdk/'
-let tcbService = new TcbService(wx.cloud)
-tcbService.callService({
-    service: 'video',
-    action: 'webrtcroom-enter-room',
-    data: {
-        roomID: '1234' 
-    }
-})
-```
-
-### Node
+### Node （云函数或云主机）
 1. 使用该命令安装依赖： `npm i --save tcb-service-sdk wx-server-sdk`
 2. 初始化
 
@@ -51,7 +34,9 @@ tcbService.callService({
 const cloud = require('wx-server-sdk')
 cloud.init()
 import TcbService from 'tcb-service-sdk'
-let tcbService = new TcbService(cloud)
+let tcbService = new TcbService({
+    // 相关参数，secret, env 等
+})
 tcbService.callService({
     service: 'video',
     action: 'webrtcroom-enter-room',
@@ -69,7 +54,7 @@ tcbService.callService({
 
 | 字段 | 类型 | 必填 | 说明
 | --- | --- | --- | ---
-| service | string | 是 | 服务模块名称 <br> 1. video 音视频 <br> 2. ai 智能图像 <br> 3. sms 短信
+| service | string | 是 | 服务模块名称 <br> 1. sms 短信 <br> 2. ai 智能图像 
 | action | string | 是 | 具体服务
 | data | object | 否 | 传入参数
 

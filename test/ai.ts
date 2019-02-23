@@ -40,7 +40,7 @@ describe('人脸融合', () => {
     }, 20000);
 });
 
-describe('人脸核身', () => {
+describe.only('人脸核身', () => {
     // it('实名核身鉴权', async () => {
     //     
     //     let result = await tcbService.callService({
@@ -78,6 +78,20 @@ describe('人脸核身', () => {
         let data = result.data;
         expect(typeof data.LiveCode).toBe('string');
         // console.log(data);
+    });
+
+    it('身份信息认证', async () => {
+        let result = await tcbService.callService({
+            service: 'ai',
+            action: 'IdCardVerification',
+            data: {
+                IdCard,
+                Name
+            }
+        });
+
+        let data = result.data;
+        expect(data.Result).toBe('0');
     });
 
     it.skip('照片人脸核身', async () => {
@@ -144,6 +158,7 @@ describe('人脸识别', () => {
             }
         });
 
+        console.log(result)
         let data = result.data;
         // console.log(data);
         expect(Array.isArray(data.FaceInfos)).toBeTruthy();

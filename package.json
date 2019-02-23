@@ -4,7 +4,7 @@
   "description": "tcb js sdk for AI service",
   "main": "dist/tcb-service-node-sdk/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest ./test/ai.ts",
     "dist": "rollup -c ./tools/rollup.base.js --environment INCLUDE_DEPS,BUILD:production",
     "prepublish": "npm run dist"
   },
@@ -47,7 +47,7 @@
     "axios": "^0.18.0",
     "qcloudsms_js": "^0.1.1",
     "tcb-admin-node": "^1.4.3",
-    "tencentcloud-sdk-nodejs": "^3.0.45"
+    "tencentcloud-sdk-nodejs": "^3.0.46"
   },
   "jest": {
     "testMatch": [

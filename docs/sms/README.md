@@ -41,7 +41,7 @@
 
 在开始开发云短信应用之前，需要准备如下信息:
 
-- [x] 获取SDK AppID和AppKey
+- [x] 获取 `SDK AppID` 和 `AppKey`
 
 云短信应用SDK `AppID` 和 `AppKey` 可在[短信控制台](https://console.cloud.tencent.com/sms)的应用信息里获取，如您尚未添加应用，请到[短信控制台](https://console.cloud.tencent.com/sms)中添加应用。
 

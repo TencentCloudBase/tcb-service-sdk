@@ -81,16 +81,16 @@ class BaseService {
         });
     }
 
-    // 实名核身鉴权
-    DetectAuth(data = {}, options = {}) {
-        return this.request({
-            service: 'faceid',
-            action: 'DetectAuth',
-            version: 'v20180301',
-            data,
-            options,
-        });
-    }
+    // // 实名核身鉴权
+    // DetectAuth(data = {}, options = {}) {
+    //     return this.request({
+    //         service: 'faceid',
+    //         action: 'DetectAuth',
+    //         version: 'v20180301',
+    //         data,
+    //         options,
+    //     });
+    // }
 
     // 获取动作顺序
     GetActionSequence(data = {}, options = {}) {
@@ -114,6 +114,18 @@ class BaseService {
         });
     }
 
+    // 身份信息认证
+    IdCardVerification(data = {}, options = {}) {
+        return this.request({
+            service: 'faceid',
+            action: 'IdCardVerification',
+            version: 'v20180301',
+            data,
+            options,
+        });
+    }
+
+    // 照片人脸核身
     ImageRecognition(data = {}, options = {}) {
         return this.request({
             service: 'faceid',
@@ -146,16 +158,16 @@ class BaseService {
         });
     }
 
-    // 获取实名核身结果信息
-    GetDetectInfo(data = {}, options = {}) {
-        return this.request({
-            service: 'faceid',
-            action: 'GetDetectInfo',
-            version: 'v20180301',
-            data,
-            options,
-        });
-    }
+    // // 获取实名核身结果信息
+    // GetDetectInfo(data = {}, options = {}) {
+    //     return this.request({
+    //         service: 'faceid',
+    //         action: 'GetDetectInfo',
+    //         version: 'v20180301',
+    //         data,
+    //         options,
+    //     });
+    // }
 
     // 人脸检测与分析
     DetectFace(data = {}, options = {}) {
@@ -180,6 +192,7 @@ class BaseService {
         });
     }
 
+    // 人脸对比
     CompareFace(data = {}, options = {}) {
         return this.request({
             service: 'iai',

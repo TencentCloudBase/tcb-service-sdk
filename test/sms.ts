@@ -1,14 +1,28 @@
-const {
-    AppID,
-    AppKey,
-    phoneNumber,
-    phoneNumbers,
-    Sign
-} = require('./config');
 const fs = require('fs');
+let AppID = null;
+let AppKey = null;
+let phoneNumber = null;
+let phoneNumbers = null;
+let Sign = null;
+
+if (fs.existsSync('./test/config/index.js')) {
+    const config = require('./config');
+    AppID = config.AppID;
+    AppKey = config.AppKey;
+    phoneNumber = config.phoneNumber;
+    phoneNumbers = config.phoneNumbers;
+    Sign = config.Sign;
+}
+else {
+    AppID = process.env.SMS_APPID;
+    AppKey = process.env.SMS_APPKEY;
+    phoneNumber = process.env.phoneNumber;
+    phoneNumbers = process.env.phoneNumbers;
+    Sign = process.env.Sign;
+}
 
 import TcbService from '../src/node/index';
-const tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
+const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey });
 
 describe('发送普通短信', () => {
     it.only('单发短信', async () => {
@@ -28,7 +42,6 @@ describe('发送普通短信', () => {
     }, 1000);
 
     it('指定模板ID单发短信', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsSingleSendTemplate',
@@ -46,7 +59,6 @@ describe('发送普通短信', () => {
     }, 1000);
 
     it('群发', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsMultiSend',
@@ -63,7 +75,6 @@ describe('发送普通短信', () => {
     }, 1000);
 
     it('群发 - 指定模板ID单发短信', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsMultiSendTemplate',
@@ -83,7 +94,6 @@ describe('发送普通短信', () => {
 
 describe('发送语音消息', async () => {
     it('语音验证', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'CodeVoiceSend',
@@ -100,7 +110,6 @@ describe('发送语音消息', async () => {
     }, 1000);
 
     it('发送语音通知', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'PromptVoiceSend',
@@ -117,7 +126,6 @@ describe('发送语音消息', async () => {
     }, 1000);
 
     it('指定模板发送语音通知', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'TtsVoiceSend',
@@ -134,7 +142,6 @@ describe('发送语音消息', async () => {
     }, 1000);
 
     it.only('上传语音文件', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'VoiceFileUpload',
@@ -149,7 +156,6 @@ describe('发送语音消息', async () => {
     });
 
     it('按语音文件fid发送语音通知', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'FileVoiceSend',
@@ -168,7 +174,6 @@ describe('发送语音消息', async () => {
 
 describe('拉取回执与回复', () => {
     it('拉取短信回执', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsStatusPullCallback',
@@ -182,7 +187,6 @@ describe('拉取回执与回复', () => {
     }, 1000);
     
     it('拉取短信回复', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsStatusPullReply',
@@ -196,7 +200,6 @@ describe('拉取回执与回复', () => {
     }, 1000);
 
     it('拉取单个手机短信回执', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsMobileStatusPullCallback',
@@ -214,7 +217,6 @@ describe('拉取回执与回复', () => {
     }, 1000);
 
     it('拉取单个手机短信回复', async () => {
-        let tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey });
         let result = await tcbService.callService({
             service: 'sms',
             action: 'SmsMobileStatusPullReply',

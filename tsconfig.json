@@ -14,7 +14,7 @@
       "noEmitOnError": false,
       "noFallthroughCasesInSwitch": true,
       "noImplicitAny": false,
-      "noUnusedLocals": true,
+      "noUnusedLocals": false,
       "noUnusedParameters": true,
       "pretty": true,
       "removeComments": true,

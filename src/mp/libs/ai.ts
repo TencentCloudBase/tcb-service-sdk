@@ -5,7 +5,7 @@ import {
 
 export default class AI extends Base {
     public async init(): Promise<ReturnValue> {
-        let { result } = await this.cloud.callFunction({
+        let { result } = await this.tcbService.cloud.callFunction({
             name: this.action,
             data: this.data
         });

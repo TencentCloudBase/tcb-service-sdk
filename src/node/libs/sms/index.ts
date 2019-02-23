@@ -7,12 +7,12 @@ import {
 export default class SMS extends Base {
     public async init(): Promise<ReturnValue> {
         let {
-            SecretID,
-            SecretKey
-        } = this.options;
+            smsAppID,
+            smsAppKey
+        } = this.tcbService;
 
         try {
-            let smsClient = new SmsClient({ AppID: SecretID, AppKey: SecretKey });
+            let smsClient = new SmsClient({ AppID: smsAppID, AppKey: smsAppKey });
             let data = await smsClient.init({
                 action: this.action,
                 data: this.data

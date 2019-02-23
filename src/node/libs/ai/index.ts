@@ -7,12 +7,12 @@ import {
 export default class AI extends Base {
     public async init(): Promise<ReturnValue> {
         let {
-            SecretID,
-            SecretKey
-        } = this.options;
-    
+            secretID,
+            secretKey
+        } = this.tcbService;
+
         try {
-            let imgClient = new ImageClient({ SecretID, SecretKey });
+            let imgClient = new ImageClient({ SecretID: secretID, SecretKey: secretKey });
             let result = await imgClient.init({
                 action: this.action,
                 data: this.data

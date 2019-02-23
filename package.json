@@ -1,6 +1,6 @@
 {
   "name": "tcb-service-sdk",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "tcb js sdk for AI service",
   "main": "dist/tcb-service-node-sdk/index.js",
   "scripts": {
@@ -44,6 +44,7 @@
     "node": ">=8.6.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "qcloudsms_js": "^0.1.1",
     "tcb-admin-node": "^1.4.3",
     "tencentcloud-sdk-nodejs": "^3.0.45"

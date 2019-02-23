@@ -78,7 +78,7 @@ var Base = (function () {
     return Base;
 }());
 
-var ImageClient = require('image-node-sdk').ImageClient;
+var ImageClient = require('./libs/BaseService');
 var AI = (function (_super) {
     __extends(AI, _super);
     function AI() {
@@ -121,7 +121,7 @@ var AI = (function (_super) {
     return AI;
 }(Base));
 
-var SmsClient = require('sms-node-sdk').SmsClient;
+var SmsClient = require('./libs/BaseService');
 var SMS = (function (_super) {
     __extends(SMS, _super);
     function SMS() {
@@ -167,7 +167,7 @@ var SMS = (function (_super) {
 var cloud = require('tcb-admin-node');
 var TcbService = (function () {
     function TcbService(_a) {
-        var _b = _a.SecretID, SecretID = _b === void 0 ? null : _b, _c = _a.SecretKey, SecretKey = _c === void 0 ? null : _c;
+        var _b = _a === void 0 ? {} : _a, _c = _b.SecretID, SecretID = _c === void 0 ? null : _c, _d = _b.SecretKey, SecretKey = _d === void 0 ? null : _d;
         this.cloud = cloud;
         this.SecretID = SecretID || process.env.TENCENTCLOUD_SECRETID;
         this.SecretKey = SecretKey || process.env.TENCENTCLOUD_SECRETKEY;

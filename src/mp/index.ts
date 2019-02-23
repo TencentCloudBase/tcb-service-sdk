@@ -15,15 +15,15 @@ export default class TcbService {
     callService({ service, version = 'v1.0.0', action, data }: Options): Promise<ReturnValue> {
         switch (service) {
             case 'ai': {
-                const ai = new AI(this.cloud, version, action, data);
+                const ai = new AI(this, version, action, data);
                 return ai.init();
             }
             case 'video': {
-                const video = new Video(this.cloud, version, action, data);
+                const video = new Video(this, version, action, data);
                 return video.init();
             }
             case 'sms': {
-                const sms = new SMS(this.cloud, version, action, data);
+                const sms = new SMS(this, version, action, data);
                 return sms.init();
             }
         }

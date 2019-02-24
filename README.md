@@ -95,7 +95,7 @@ tcbService.callService({
 
 类型 | 说明
 | --- | ---
-| string | 资源的内容字符串
+| buffer | 资源的内容 buffer
 
 - 使用例子
 

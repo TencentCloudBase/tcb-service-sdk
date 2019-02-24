@@ -14,7 +14,7 @@ else {
     SecretKey = process.env.TENCENTCLOUD_SECRETKEY2;
 }
 
-import TcbService from '../src/node/index';
+const TcbService = require('../dist/tcb-service-node-sdk');
 const tcbService = new TcbService({
     secretID: SecretID,
     secretKey: SecretKey,

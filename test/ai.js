@@ -15,7 +15,7 @@ else {
     Name = config.Name;
 }
 
-import TcbService from '../src/node/index';
+const TcbService = require('../dist/tcb-service-node-sdk');
 const tcbService = new TcbService();
 
 describe('人脸融合', () => {

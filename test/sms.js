@@ -21,7 +21,7 @@ else {
     Sign = process.env.Sign;
 }
 
-import TcbService from '../src/node/index';
+const TcbService = require('../dist/tcb-service-node-sdk');
 const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey });
 
 describe('发送普通短信', () => {

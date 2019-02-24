@@ -93,7 +93,7 @@ tcbService.callService({
 
 - 返回值说明
 
- 类型 | 说明
+类型 | 说明
 | --- | --- | ---
 | string | 资源的内容字符串
 

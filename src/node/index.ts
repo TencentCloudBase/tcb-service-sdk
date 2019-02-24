@@ -19,20 +19,27 @@ export default class TcbService {
     private smsAppID: string;
     private smsAppKey: string;
 
-    constructor({ secretID = null, secretKey = null, smsAppID = null, smsAppKey = null, env = '' } = {}) {
+    constructor({ secretID = null, secretKey = null, smsAppID = null, smsAppKey = null, env = null } = {}) {
         this.cloud = cloud;
         this.env = env;
         this.secretID = secretID || process.env.TENCENTCLOUD_SECRETID;
         this.secretKey = secretKey || process.env.TENCENTCLOUD_SECRETKEY;
         this.smsAppID = smsAppID;
         this.smsAppKey = smsAppKey;
+
+        this.cloud.init({
+            secretId: this.secretID,
+            secretKey: this.secretKey,
+            env
+        });
+
         this.utils = new Utils(this);
     }
 
-    public callService({ service, version = 'v1.0.0', action, data }: Options): Promise<ReturnValue> {
+    public callService({ service, version = 'v1.0.0', action, data = {}, options = {}}: Options): Promise<ReturnValue> {
         switch (service) {
             case 'ai': {
-                const ai = new AI(this, version, action, data);
+                const ai = new AI(this, version, action, data, options);
                 return ai.init();
             }
             // case 'video': {
@@ -40,7 +47,7 @@ export default class TcbService {
             //     return video.init();
             // }
             case 'sms': {
-                const sms = new SMS(this, version, action, data);
+                const sms = new SMS(this, version, action, data, options);
                 return sms.init();
             }
         }

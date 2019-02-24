@@ -9,7 +9,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 const TcbService = require('tcb-service-sdk')
-const tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey })
+const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey })
 
 const validTime = 120000 // 验证码有效时间
 const gapTime = 60000 // 验证码可发送间隔

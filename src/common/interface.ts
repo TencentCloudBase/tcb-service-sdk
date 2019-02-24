@@ -4,6 +4,7 @@ export interface Options {
     action: string;
     version?: string;
     data?: any;
+    options?: any;
 }
 
 export interface ReturnValue {

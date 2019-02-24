@@ -46,11 +46,11 @@ tcbService.callService({
 })
 ```
 
-## 接口
+## 接口文档
 
 ### callService
 
-- 入参
+- 参数说明
 
 | 字段 | 类型 | 必填 | 说明
 | --- | --- | --- | ---
@@ -58,10 +58,48 @@ tcbService.callService({
 | action | string | 是 | 具体服务
 | data | object | 否 | 传入参数
 
-- 出参
+- 返回值说明
 
 | 字段 | 类型 | 必填 | 说明
 | --- | --- | --- | ---
 | code | string | 是 | 返回错误码，0为成功
 | message | string | 是 | 返回信息
 | data | object|array | 是 | 返回数据
+
+- 使用例子
+
+```js
+tcbService.callService({
+    service: 'video',
+    action: 'WebrtcEnterRoom',
+    data: {
+        roomID: '1234' 
+    }
+})
+```
+
+### utils.getContent
+
+> 仅适用于服务端
+
+- 参数说明
+
+| 字段 | 类型 | 必填 | 说明
+| --- | --- | --- | ---
+| fileID | string | 否 | 资源的 fileID
+| url | string | 否 | 资源的链接，fileID 和 url 选填一个
+| options | object | 否 | 当传入 url 参数时，发送请求的参数，参考 [axios](https://github.com/axios/axios) 的文档 
+
+- 返回值说明
+
+ 类型 | 说明
+| --- | --- | ---
+| string | 资源的内容字符串
+
+- 使用例子
+
+```js
+tcbService.utils.getContent({
+    fileID: 'cloud://test-f4c0d1.7465-test-f4c0d1/face.jpg'
+})
+```

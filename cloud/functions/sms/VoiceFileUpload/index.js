@@ -6,7 +6,7 @@ const {
 const cloud = require('wx-server-sdk')
 cloud.init()
 const TcbService = require('tcb-service-sdk')
-const tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey })
+const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey })
 
 exports.main = async (event, context) => {
   let {
@@ -27,16 +27,16 @@ exports.main = async (event, context) => {
   }
 
   try {
-    let fileResult = await cloud.downloadFile({
-      fileID,
+    let fileContent = await tcbService.utils.getContent({
+      fileID
     })
 
-    if (fileResult.fileContent) {
+    if (fileContent) {
       let result = await tcbService.callService({
         service: 'sms',
         action: 'VoiceFileUpload',
         data: {
-          fileContent: fileResult.fileContent,
+          fileContent: new Buffer(fileContent),
           contentType
         }
       })

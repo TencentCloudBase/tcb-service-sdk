@@ -1,4 +1,4 @@
-const ImageClient = require('./libs/BaseService');
+import ImageClient from './libs/BaseService';
 import Base from '../base';
 import {
     ReturnValue
@@ -6,13 +6,8 @@ import {
 
 export default class AI extends Base {
     public async init(): Promise<ReturnValue> {
-        let {
-            secretID,
-            secretKey
-        } = this.tcbService;
-
         try {
-            let imgClient = new ImageClient({ SecretID: secretID, SecretKey: secretKey });
+            let imgClient = new ImageClient({ SecretID: this.secretID, SecretKey: this.secretKey });
             let result = await imgClient.init({
                 action: this.action,
                 data: this.data

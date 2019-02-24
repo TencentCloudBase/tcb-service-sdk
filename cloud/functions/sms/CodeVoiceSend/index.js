@@ -6,7 +6,7 @@ const {
 const cloud = require('wx-server-sdk')
 cloud.init()
 const TcbService = require('tcb-service-sdk')
-const tcbService = new TcbService({ SecretID: AppID, SecretKey: AppKey })
+const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey })
 
 exports.main = async (event, context) => {
   let {

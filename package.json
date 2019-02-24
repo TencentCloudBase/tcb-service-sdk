@@ -1,10 +1,10 @@
 {
   "name": "tcb-service-sdk",
-  "version": "0.0.9",
+  "version": "0.0.18",
   "description": "tcb js sdk for AI service",
   "main": "dist/tcb-service-node-sdk/index.js",
   "scripts": {
-    "test": "jest ./test/ai.ts",
+    "test": "jest",
     "dist": "rollup -c ./tools/rollup.base.js --environment INCLUDE_DEPS,BUILD:production",
     "prepublish": "npm run dist"
   },

@@ -65,9 +65,9 @@ function __generator(thisArg, body) {
 }
 
 var Base = (function () {
-    function Base(cloud, version, action, data, options) {
+    function Base(tcbService, version, action, data, options) {
         if (options === void 0) { options = {}; }
-        this.cloud = cloud;
+        this.tcbService = tcbService;
         this.action = action;
         this.version = version;
         this.data = data;
@@ -86,7 +86,7 @@ var AI = (function (_super) {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cloud.callFunction({
+                    case 0: return [4, this.tcbService.cloud.callFunction({
                             name: this.action,
                             data: this.data
                         })];
@@ -110,7 +110,7 @@ var Video = (function (_super) {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cloud.callFunction({
+                    case 0: return [4, this.tcbService.cloud.callFunction({
                             name: this.action,
                             data: this.data
                         })];
@@ -134,7 +134,7 @@ var SMS = (function (_super) {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cloud.callFunction({
+                    case 0: return [4, this.tcbService.cloud.callFunction({
                             name: this.action,
                             data: this.data
                         })];
@@ -157,15 +157,15 @@ var TcbService = (function () {
         var service = _a.service, _b = _a.version, version = _b === void 0 ? 'v1.0.0' : _b, action = _a.action, data = _a.data;
         switch (service) {
             case 'ai': {
-                var ai = new AI(this.cloud, version, action, data);
+                var ai = new AI(this, version, action, data);
                 return ai.init();
             }
             case 'video': {
-                var video = new Video(this.cloud, version, action, data);
+                var video = new Video(this, version, action, data);
                 return video.init();
             }
             case 'sms': {
-                var sms = new SMS(this.cloud, version, action, data);
+                var sms = new SMS(this, version, action, data);
                 return sms.init();
             }
         }

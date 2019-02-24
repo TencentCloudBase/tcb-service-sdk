@@ -22,22 +22,20 @@ const tcbService = new TcbService({
 });
 
 describe('Utils Functions', () => {
-    it('getBase64 - url', async () => {
-        let result = await tcbService.utils.getBase64({
+    it('getContent - url', async () => {
+        let result = await tcbService.utils.getContent({
             url: 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3400710384,952532930&fm=173&app=49&f=JPEG?w=356&h=515&s=37FC132A8C22469C24250EDB03008095',
             options: {
                 maxContentLength: 40000,
             }
         });
-
-        expect(typeof result).toBe('string');
+        expect(typeof result.toString('base64')).toBe('string');
     }, 10000);
 
-    it('getBase64 - url', async () => {
-        let result = await tcbService.utils.getBase64({
-            fileID: 'cloud://production-c3ccb6.7072-production-c3ccb6/1550567273903-7919.jpg'
+    it('getContent - fileID', async () => {
+        let result = await tcbService.utils.getContent({
+            fileID: 'cloud://production-c3ccb6.7072-production-c3ccb6/1550938365509-482.jpg'
         });
-
-        expect(typeof result).toBe('string');
+        expect(typeof result.toString('base64')).toBe('string');
     }, 10000);
 });

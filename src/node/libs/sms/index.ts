@@ -1,4 +1,4 @@
-const SmsClient = require('./libs/BaseService');
+import SmsClient from './libs/BaseService';
 import Base from '../base';
 import {
     ReturnValue

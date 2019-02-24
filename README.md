@@ -5,8 +5,8 @@
 
 以下是支持服务的接口入参，具体用法请参考下节的[支持平台及使用步骤](#支持平台及使用步骤)。
 
-* [短信](docs/sms/README.md)
-* [AI](docs/ai/README.md)
+* [短信](/docs/sms/README.md)
+* [AI](/docs/ai/README.md)
 
 ## 支持平台及使用步骤
 
@@ -56,7 +56,8 @@ tcbService.callService({
 | --- | --- | --- | ---
 | service | string | 是 | 服务模块名称 <br> 1. sms 短信 <br> 2. ai 智能图像 
 | action | string | 是 | 具体服务
-| data | object | 否 | 传入参数
+| data | object | 否 | 传入请求参数
+| options | object | 否 | 传入其它参数，比如这里若传入 `secretID` 和 `secretKey`，则与在初始化的时候传入的不同，表时此处 `callFunction` 希望调用其它腾讯云账号的服务
 
 - 返回值说明
 

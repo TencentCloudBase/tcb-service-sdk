@@ -57,7 +57,7 @@
 
 ### 文档
 
-* [服务端SDK文档](docs/sms/服务端SDK文档/接口列表.md)
-* [客户端SDK文档](docs/sms/客户端SDK文档/接口列表.md)
+* [服务端SDK文档](/docs/sms/服务端SDK文档/接口列表.md)
+* [客户端SDK文档](/docs/sms/客户端SDK文档/接口列表.md)
 * [API开发指南](https://cloud.tencent.com/document/product/382/5808)
 * [错误码](https://cloud.tencent.com/document/product/382/3771)

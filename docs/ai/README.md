@@ -22,7 +22,7 @@
 
 ### 文档
 
-* [服务端SDK文档](docs/ai/服务端SDK文档/接口列表.md)
-* [客户端SDK文档](docs/ai/客户端SDK文档/接口列表.md)
+* [服务端SDK文档](/docs/ai/服务端SDK文档/接口列表.md)
+* [客户端SDK文档](/docs/ai/客户端SDK文档/接口列表.md)
 
 

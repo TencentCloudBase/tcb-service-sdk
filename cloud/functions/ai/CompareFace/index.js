@@ -35,8 +35,6 @@ exports.main = async (event) => {
       data: {
         ImageA: personA.toString('base64'),
         ImageB: personB.toString('base64'),
-        UrlA: UrlA,
-        UrlB: UrlB
       },
       options: {
         secretID: SecretID,

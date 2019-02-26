@@ -104,3 +104,6 @@ tcbService.utils.getContent({
     fileID: 'cloud://test-f4c0d1.7465-test-f4c0d1/face.jpg'
 })
 ```
+
+### 第三方能力接入
+[接入文档](/docs/接入指南.md)

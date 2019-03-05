@@ -1,11 +1,14 @@
 const fs = require('fs');
+const path = require('path');
+
+let TestConfigPath = path.join(__dirname, './config/');
 let AppID = null;
 let AppKey = null;
 let phoneNumber = null;
 let phoneNumbers = null;
 let Sign = null;
 
-if (fs.existsSync('./test/config/index.js')) {
+if (fs.existsSync(path.join(TestConfigPath, './index.js'))) {
     const config = require('./config');
     AppID = config.AppID;
     AppKey = config.AppKey;
@@ -21,7 +24,7 @@ else {
     Sign = process.env.Sign;
 }
 
-const TcbService = require('../dist/tcb-service-node-sdk');
+const TcbService = require('../../dist/tcb-service-node-sdk');
 const tcbService = new TcbService({ smsAppID: AppID, smsAppKey: AppKey });
 
 describe('发送普通短信', () => {
@@ -146,7 +149,7 @@ describe('发送语音消息', async () => {
             service: 'sms',
             action: 'VoiceFileUpload',
             data: {
-                fileContent: fs.readFileSync('./test/config/cloudbase.mp3')
+                fileContent: fs.readFileSync(path.join(TestConfigPath, './cloudbase.mp3'))
             }
         });
 

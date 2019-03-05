@@ -1,5 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 
+let TestConfigPath = path.join(__dirname, './config/');
 let IdCard = null;
 let Name = null;
 
@@ -15,12 +17,12 @@ else {
     Name = config.Name;
 }
 
-const TcbService = require('../dist/tcb-service-node-sdk');
+const TcbService = require('../../dist/tcb-service-node-sdk');
 const tcbService = new TcbService();
 
-describe('人脸融合', () => {
+describe.only('人脸融合', () => {
     it('人脸融合 - faceFuse', async () => {
-        let imgData = fs.readFileSync('./test/config/ponyma.jpg').toString('base64');
+        let imgData = fs.readFileSync(path.join(TestConfigPath, './ponyma.jpg')).toString('base64');
 
         let result = await tcbService
             .callService({
@@ -33,7 +35,7 @@ describe('人脸融合', () => {
                     RspImgType: 'url'
                 }
             });
-        
+
         let data = result.data;
         expect(data.Image).not.toBeNull();
         expect(data.RequestId).not.toBeNull();
@@ -101,7 +103,7 @@ describe.only('人脸核身', () => {
             data: {
                 IdCard,
                 Name,
-                ImageBase64: fs.readFileSync('./test/config/face.jpg').toString('base64'),
+                ImageBase64: fs.readFileSync(path.join(TestConfigPath, './face.jpg')).toString('base64'),
             }
         });
 
@@ -115,8 +117,8 @@ describe.only('人脸核身', () => {
             service: 'ai',
             action: 'LivenessCompare',
             data: {
-                VideoBase64: fs.readFileSync('./test/config/faceIdCardLiveDetectFour.mp4').toString('base64'),
-                ImageBase64: fs.readFileSync('./test/config/face.jpg').toString('base64'),
+                VideoBase64: fs.readFileSync(path.join(TestConfigPath, './faceIdCardLiveDetectFour.mp4')).toString('base64'),
+                ImageBase64: fs.readFileSync(path.join(TestConfigPath, './face.jpg')).toString('base64'),
                 LivenessType: 'LIP',
                 ValidateData: '1234'
             }
@@ -134,7 +136,7 @@ describe.only('人脸核身', () => {
             data: {
                 IdCard,
                 Name,
-                VideoBase64: fs.readFileSync('./test/config/faceIdCardLiveDetectFour.mp4').toString('base64'),
+                VideoBase64: fs.readFileSync(path.join(TestConfigPath, './faceIdCardLiveDetectFour.mp4')).toString('base64'),
                 LivenessType: 'LIP',
                 ValidateData: '1234'
             }
@@ -154,7 +156,7 @@ describe('人脸识别', () => {
             service: 'ai',
             action: 'DetectFace',
             data: {
-                Image: fs.readFileSync('./test/config/ponyma.jpg').toString('base64'),
+                Image: fs.readFileSync(path.join(TestConfigPath, './ponyma.jpg')).toString('base64'),
             }
         });
 
@@ -171,7 +173,7 @@ describe('人脸识别', () => {
             action: 'AnalyzeFace',
             data: {
                 Mode: 0,
-                Image: fs.readFileSync('./test/config/ponyma.jpg').toString('base64'),
+                Image: fs.readFileSync(path.join(TestConfigPath, './ponyma.jpg')).toString('base64'),
             }
         });
 
@@ -186,8 +188,8 @@ describe('人脸识别', () => {
             service: 'ai',
             action: 'CompareFace',
             data: {
-                ImageA: fs.readFileSync('./test/config/mengmeiqi-0001.jpeg').toString('base64'),
-                ImageB: fs.readFileSync('./test/config/mengmeiqi-0002.jpeg').toString('base64'),
+                ImageA: fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0001.jpeg')).toString('base64'),
+                ImageB: fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0002.jpeg')).toString('base64'),
             }
         });
 
@@ -280,7 +282,7 @@ describe('人脸识别', () => {
                     GroupId: 'mengmeiqi-01',
                     PersonName: '孟美歧',
                     PersonId: 'mengmeiqi-0001',
-                    Image: fs.readFileSync('./test/config/mengmeiqi-0001.jpeg').toString('base64'),
+                    Image: fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0001.jpeg')).toString('base64'),
                 }
             });
         }
@@ -436,8 +438,8 @@ describe('人脸识别', () => {
                 data: {
                     PersonId: 'mengmeiqi-0001',
                     Images: [
-                        fs.readFileSync('./test/config/mengmeiqi-0002.jpeg').toString('base64'),
-                        fs.readFileSync('./test/config/mengmeiqi-0003.jpeg').toString('base64')
+                        fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0002.jpeg')).toString('base64'),
+                        fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0003.jpeg')).toString('base64')
                     ],
                 }
             });
@@ -490,7 +492,7 @@ describe('人脸识别', () => {
             action: 'SearchFaces',
             data: {
                 GroupIds: ['mengmeiqi-01'],
-                Image: fs.readFileSync('./test/config/mengmeiqi-0004.jpg').toString('base64'),
+                Image: fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0004.jpg')).toString('base64'),
             }
         });
         let data = result.data;
@@ -504,7 +506,7 @@ describe('人脸识别', () => {
             action: 'VerifyFace',
             data: {
                 PersonId: 'mengmeiqi-0001',
-                Image: fs.readFileSync('./test/config/mengmeiqi-0004.jpg').toString('base64'),
+                Image: fs.readFileSync(path.join(TestConfigPath, './mengmeiqi-0004.jpg')).toString('base64'),
             }
         });
         let data = result.data;
@@ -518,7 +520,7 @@ describe('人脸识别', () => {
             service: 'ai',
             action: 'DetectLiveFace',
             data: {
-                Image: fs.readFileSync('./test/config/face.jpg').toString('base64'),
+                Image: fs.readFileSync(path.join(TestConfigPath, './face.jpg')).toString('base64'),
             }
         });
         let data = result.data;

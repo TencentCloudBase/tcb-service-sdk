@@ -52,7 +52,7 @@
   "jest": {
     "testMatch": [
       "**/test/!(tools)/*.js",
-      "**/test/*.js"
+      "**/test/*/*.js"
     ],
     "testEnvironment": "node",
     "transform": {

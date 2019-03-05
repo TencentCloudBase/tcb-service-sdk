@@ -1,9 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 
+let TestConfigPath = path.join(__dirname, './config/');
 let SecretID = null;
 let SecretKey = null;
 
-if (fs.existsSync('./test/config/index.js')) {
+if (fs.existsSync(path.join(TestConfigPath, './index.js'))) {
     const config = require('./config');
     SecretID = config.SecretID1;
     SecretKey = config.SecretKey1;
@@ -14,7 +16,7 @@ else {
     SecretKey = process.env.TENCENTCLOUD_SECRETKEY2;
 }
 
-const TcbService = require('../dist/tcb-service-node-sdk');
+const TcbService = require('../../dist/tcb-service-node-sdk');
 const tcbService = new TcbService({
     secretID: SecretID,
     secretKey: SecretKey,

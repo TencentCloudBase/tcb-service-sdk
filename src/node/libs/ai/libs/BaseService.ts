@@ -175,7 +175,6 @@ export default class BaseService {
 
     // 人脸检测与分析
     DetectFace(data = {}, options = {}) {
-        console.log();
         return this.request({
             service: 'iai',
             action: 'DetectFace',

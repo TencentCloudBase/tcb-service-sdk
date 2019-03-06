@@ -44,7 +44,7 @@ describe.only('人脸融合', () => {
 
 describe.only('人脸核身', () => {
     // it('实名核身鉴权', async () => {
-    //     
+    //
     //     let result = await tcbService.callService({
     //             service: 'ai',
     //             action: 'DetectAuth',
@@ -151,7 +151,6 @@ describe.only('人脸核身', () => {
 describe('人脸识别', () => {
 
     it('人脸检测与分析', async () => {
-        
         let result = await tcbService.callService({
             service: 'ai',
             action: 'DetectFace',
@@ -160,14 +159,13 @@ describe('人脸识别', () => {
             }
         });
 
-        console.log(result)
         let data = result.data;
-        // console.log(data);
+        console.log(data);
         expect(Array.isArray(data.FaceInfos)).toBeTruthy();
     }, 5000);
 
     it('五官识别', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'AnalyzeFace',
@@ -183,7 +181,7 @@ describe('人脸识别', () => {
     }, 5000);
 
     it('人脸比对', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'CompareFace',
@@ -216,7 +214,7 @@ describe('人脸识别', () => {
 
     it('删除人员库', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'DeleteGroup',
@@ -231,7 +229,7 @@ describe('人脸识别', () => {
     });
 
     it('获取人员库列表', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'GetGroupList',
@@ -258,7 +256,7 @@ describe('人脸识别', () => {
 
     it('修改人员库', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'ModifyGroup',
@@ -274,7 +272,7 @@ describe('人脸识别', () => {
 
     it('创建人员', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'CreatePerson',
@@ -308,7 +306,7 @@ describe('人脸识别', () => {
 
     it('人员库删除人员', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'DeletePersonFromGroup',
@@ -333,7 +331,7 @@ describe('人脸识别', () => {
                 Limit: 10
             }
         });
-        
+
         let data = result.data;
         // console.log(data);
         expect(data.PersonNum).toBe(1);
@@ -341,7 +339,7 @@ describe('人脸识别', () => {
     }, 5000);
 
     it('获取人员列表长度', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'GetPersonListNum',
@@ -357,7 +355,7 @@ describe('人脸识别', () => {
     }, 5000);
 
     it('获取人员基础信息', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'GetPersonBaseInfo',
@@ -365,7 +363,7 @@ describe('人脸识别', () => {
                 PersonId: 'mengmeiqi-0001',
             }
         });
-        
+
         let data = result.data;
         // console.log(data);
         expect(data.PersonName).toBe('孟美歧');
@@ -373,7 +371,7 @@ describe('人脸识别', () => {
     }, 5000);
 
     it('获取人员归属信息', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'GetPersonGroupInfo',
@@ -383,7 +381,7 @@ describe('人脸识别', () => {
                 Limit: 10
             }
         });
-        
+
         let data = result.data;
         // console.log(data);
         expect(data.PersonGroupInfos).toEqual([
@@ -393,7 +391,7 @@ describe('人脸识别', () => {
 
     it('修改人员基础信息', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'ModifyPersonBaseInfo',
@@ -410,7 +408,7 @@ describe('人脸识别', () => {
 
     it('修改人员描述信息', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'ModifyPersonGroupInfo',
@@ -431,7 +429,7 @@ describe('人脸识别', () => {
 
     it('增加人脸', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'CreateFace',
@@ -454,7 +452,7 @@ describe('人脸识别', () => {
     }, 5000);
 
     it('删除人脸', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'DeleteFace',
@@ -470,7 +468,7 @@ describe('人脸识别', () => {
 
     it('复制人员', async () => {
         try {
-            
+
             await tcbService.callService({
                 service: 'ai',
                 action: 'CopyPerson',
@@ -486,7 +484,7 @@ describe('人脸识别', () => {
     }, 20000);
 
     it('人脸搜索', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'SearchFaces',
@@ -500,7 +498,7 @@ describe('人脸识别', () => {
     }, 20000);
 
     it('人脸验证', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'VerifyFace',
@@ -515,7 +513,7 @@ describe('人脸识别', () => {
     }, 20000);
 
     it.skip('人脸静态活体检测', async () => {
-        
+
         let result = await tcbService.callService({
             service: 'ai',
             action: 'DetectLiveFace',

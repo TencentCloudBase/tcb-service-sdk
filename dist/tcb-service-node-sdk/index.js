@@ -219,7 +219,6 @@ var BaseService = (function () {
     BaseService.prototype.DetectFace = function (data, options) {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
-        console.log();
         return this.request({
             service: 'iai',
             action: 'DetectFace',

@@ -87,6 +87,9 @@ var config = {
         },
         'iai': {
             url: 'iai.tencentcloudapi.com'
+        },
+        'ocr': {
+            url: 'ocr.tencentcloudapi.com'
         }
     }
 };
@@ -454,6 +457,28 @@ var BaseService = (function () {
             service: 'iai',
             action: 'DetectLiveFace',
             version: 'v20180301',
+            data: data,
+            options: options,
+        });
+    };
+    BaseService.prototype.GeneralBasicOCR = function (data, options) {
+        if (data === void 0) { data = {}; }
+        if (options === void 0) { options = {}; }
+        return this.request({
+            service: 'ocr',
+            action: 'GeneralBasicOCR',
+            version: 'v20181119',
+            data: data,
+            options: options,
+        });
+    };
+    BaseService.prototype.IDCardOCR = function (data, options) {
+        if (data === void 0) { data = {}; }
+        if (options === void 0) { options = {}; }
+        return this.request({
+            service: 'ocr',
+            action: 'IDCardOCR',
+            version: 'v20181119',
             data: data,
             options: options,
         });

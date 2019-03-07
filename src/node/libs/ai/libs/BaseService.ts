@@ -414,4 +414,26 @@ export default class BaseService {
             options,
         });
     }
+
+    // 通用印刷体识别
+    GeneralBasicOCR(data = {}, options = {}) {
+        return this.request({
+            service: 'ocr',
+            action: 'GeneralBasicOCR',
+            version: 'v20181119',
+            data,
+            options,
+        });
+    }
+
+    // 身份证识别
+    IDCardOCR(data = {}, options = {}) {
+        return this.request({
+            service: 'ocr',
+            action: 'IDCardOCR',
+            version: 'v20181119',
+            data,
+            options,
+        });
+    }
 }

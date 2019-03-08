@@ -9,6 +9,9 @@ export default {
         },
         'iai': {
             url: 'iai.tencentcloudapi.com'
+        },
+        'ocr': {
+            url: 'ocr.tencentcloudapi.com'
         }
     }
 };

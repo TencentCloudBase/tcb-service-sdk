@@ -175,7 +175,6 @@ export default class BaseService {
 
     // 人脸检测与分析
     DetectFace(data = {}, options = {}) {
-        console.log();
         return this.request({
             service: 'iai',
             action: 'DetectFace',
@@ -411,6 +410,28 @@ export default class BaseService {
             service: 'iai',
             action: 'DetectLiveFace',
             version: 'v20180301',
+            data,
+            options,
+        });
+    }
+
+    // 通用印刷体识别
+    GeneralBasicOCR(data = {}, options = {}) {
+        return this.request({
+            service: 'ocr',
+            action: 'GeneralBasicOCR',
+            version: 'v20181119',
+            data,
+            options,
+        });
+    }
+
+    // 身份证识别
+    IDCardOCR(data = {}, options = {}) {
+        return this.request({
+            service: 'ocr',
+            action: 'IDCardOCR',
+            version: 'v20181119',
             data,
             options,
         });

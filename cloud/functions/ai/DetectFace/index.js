@@ -12,8 +12,8 @@ exports.main = async (event) => {
     MinFaceSize,
     FileID,
     Url,
-    NeedFaceAttributes,
-    NeedQualityDetection
+    NeedFaceAttributes = 1,
+    NeedQualityDetection = 1,
   } = event
 
   try {

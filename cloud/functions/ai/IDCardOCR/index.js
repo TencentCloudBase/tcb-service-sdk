@@ -10,7 +10,7 @@ exports.main = async (event) => {
   const {
     FileID,
     ImageUrl,
-    CardSide,
+    CardSide = 'FRONT',
     Config,
   } = event
 

@@ -17,6 +17,19 @@ export default [
         ]
     },
     {
+        input: 'src/mp/index.ts',
+        output: {
+            name: 'service',
+            file: 'dist/tcb-service-mp-sdk/cjs.js',
+            format: 'cjs'
+        },
+        plugins: [
+            resolve(), // so Rollup can find `ms`
+            typescript()
+            // commonjs(), // so Rollup can convert `ms` to an ES module
+        ]
+    },
+    {
         input: 'src/node/index.ts',
         output: {
             name: 'service',

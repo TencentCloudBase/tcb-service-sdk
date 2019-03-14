@@ -11,7 +11,13 @@
 ## 支持平台及使用步骤
 
 ### 小程序
-1. 将 `dist/tcb-service-js-sdk` 目录复制到小程序中。
+1. 将 `dist/tcb-service-js-sdk` 目录复制到小程序中，默认使用的模式是 `ES6 转 ES5`。
+
+<p align="center">
+    <img src="https://main.qcloudimg.com/raw/39458b2749f1ba607d9651c88241dad2.png" width="300px">
+    <p align="center">勾选ES6 转 ES5</p>
+</p>
+
 2. 初始化：
 
 ```js
@@ -46,6 +52,12 @@ Page({
         })
     }
 })
+```
+
+如果有特殊原因，不能使用 `ES6 转 ES5` 模式，则可引用目录里的 `cjs.js` 文件。
+
+```js
+import TcbService from '路径/tcb-service-sdk/cjs'
 ```
 
 ### Node （云函数或云主机）

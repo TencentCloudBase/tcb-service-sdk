@@ -23,7 +23,27 @@ tcbService.callService({
     data: {
         roomID: '1234' 
     }
+}).then((res) => {
+    // 处理结果
 })
+```
+
+如果要使用 `async/await`，需要引入 [runtime](/tools/runtime.js) 文件，例如：
+
+```js
+import regeneratorRuntime from '路径/runtime'
+import TcbService from '路径/tcb-service-sdk/index'
+let tcbService = new TcbService()
+
+async callService() {
+    let result = await tcbService.callService({
+        service: 'video',
+        action: 'WebrtcEnterRoom',
+        data: {
+            roomID: '1234' 
+        }
+    })
+}
 ```
 
 ### Node （云函数或云主机）

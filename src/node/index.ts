@@ -16,14 +16,24 @@ export default class TcbService {
     private env: string;
     private secretID: string;
     private secretKey: string;
+    private sessionToken: string;
     private smsAppID: string;
     private smsAppKey: string;
 
-    constructor({ secretID = null, secretKey = null, smsAppID = null, smsAppKey = null, env = null } = {}) {
+    constructor({ secretID = null, secretKey = null, sessionToken=null, smsAppID = null, smsAppKey = null, env = null } = {}) {
         this.cloud = cloud;
         this.env = env;
-        this.secretID = secretID || process.env.TENCENTCLOUD_SECRETID;
-        this.secretKey = secretKey || process.env.TENCENTCLOUD_SECRETKEY;
+
+        if (secretID){
+            this.secretID = secretID;
+            this.secretKey = secretKey;
+            this.sessionToken = sessionToken;
+        } else {
+            this.secretID = process.env.TENCENTCLOUD_SECRETID;
+            this.secretKey = process.env.TENCENTCLOUD_SECRETKEY;
+            this.sessionToken = process.env.TENCENTCLOUD_SESSIONTOKEN;
+        }
+
         this.smsAppID = smsAppID;
         this.smsAppKey = smsAppKey;
 

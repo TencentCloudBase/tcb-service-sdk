@@ -100,10 +100,23 @@ var ClientProfile = tencentcloud.common.ClientProfile;
 var HttpProfile = tencentcloud.common.HttpProfile;
 var BaseService = (function () {
     function BaseService(_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.SecretID, SecretID = _c === void 0 ? null : _c, _d = _b.SecretKey, SecretKey = _d === void 0 ? null : _d;
-        var _e = process.env, SECRETID = _e.SECRETID, SECRETKEY = _e.SECRETKEY, TENCENTCLOUD_SECRETID = _e.TENCENTCLOUD_SECRETID, TENCENTCLOUD_SECRETKEY = _e.TENCENTCLOUD_SECRETKEY;
-        this.SecretID = SecretID || TENCENTCLOUD_SECRETID || SECRETID;
-        this.SecretKey = SecretKey || TENCENTCLOUD_SECRETKEY || SECRETKEY;
+        var _b = _a === void 0 ? {} : _a, _c = _b.SecretID, SecretID = _c === void 0 ? null : _c, _d = _b.SecretKey, SecretKey = _d === void 0 ? null : _d, _e = _b.SessionToken, SessionToken = _e === void 0 ? null : _e;
+        var _f = process.env, SECRETID = _f.SECRETID, SECRETKEY = _f.SECRETKEY, SESSIONTOKEN = _f.SESSIONTOKEN, TENCENTCLOUD_SECRETID = _f.TENCENTCLOUD_SECRETID, TENCENTCLOUD_SECRETKEY = _f.TENCENTCLOUD_SECRETKEY, TENCENTCLOUD_SESSIONTOKEN = _f.TENCENTCLOUD_SESSIONTOKEN;
+        if (SecretID) {
+            this.SecretID = SecretID;
+            this.SecretKey = SecretKey;
+            this.SessionToken = SessionToken;
+        }
+        else if (TENCENTCLOUD_SECRETID) {
+            this.SecretID = TENCENTCLOUD_SECRETID;
+            this.SecretKey = TENCENTCLOUD_SECRETKEY;
+            this.SessionToken = TENCENTCLOUD_SESSIONTOKEN;
+        }
+        else {
+            this.SecretID = SECRETID;
+            this.SecretKey = SECRETKEY;
+            this.SessionToken = SESSIONTOKEN;
+        }
     }
     BaseService.prototype.setProxy = function (proxy) {
         this.Proxy = proxy || null;
@@ -123,7 +136,7 @@ var BaseService = (function () {
         var service = _a.service, action = _a.action, version = _a.version, data = _a.data, options = _a.options, _b = _a.endpoint, endpoint = _b === void 0 ? null : _b;
         var Client = tencentcloud[service][version].Client;
         var Models = tencentcloud[service][version].Models;
-        var cred = new Credential(this.SecretID, this.SecretKey);
+        var cred = new Credential(this.SecretID, this.SecretKey, this.SessionToken);
         var httpProfile = new HttpProfile();
         httpProfile.endpoint = endpoint || config.services[service].url;
         var clientProfile = new ClientProfile();
@@ -150,7 +163,7 @@ var BaseService = (function () {
             action: 'FaceFusion',
             version: 'v20181201',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetActionSequence = function (data, options) {
@@ -161,7 +174,7 @@ var BaseService = (function () {
             action: 'GetActionSequence',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetLiveCode = function (data, options) {
@@ -172,7 +185,7 @@ var BaseService = (function () {
             action: 'GetLiveCode',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.IdCardVerification = function (data, options) {
@@ -183,7 +196,7 @@ var BaseService = (function () {
             action: 'IdCardVerification',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.ImageRecognition = function (data, options) {
@@ -194,7 +207,7 @@ var BaseService = (function () {
             action: 'ImageRecognition',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.LivenessCompare = function (data, options) {
@@ -205,7 +218,7 @@ var BaseService = (function () {
             action: 'LivenessCompare',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.LivenessRecognition = function (data, options) {
@@ -216,7 +229,7 @@ var BaseService = (function () {
             action: 'LivenessRecognition',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DetectFace = function (data, options) {
@@ -227,7 +240,7 @@ var BaseService = (function () {
             action: 'DetectFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.AnalyzeFace = function (data, options) {
@@ -238,7 +251,7 @@ var BaseService = (function () {
             action: 'AnalyzeFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.CompareFace = function (data, options) {
@@ -249,7 +262,7 @@ var BaseService = (function () {
             action: 'CompareFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.CreateGroup = function (data, options) {
@@ -260,7 +273,7 @@ var BaseService = (function () {
             action: 'CreateGroup',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DeleteGroup = function (data, options) {
@@ -271,7 +284,7 @@ var BaseService = (function () {
             action: 'DeleteGroup',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetGroupList = function (data, options) {
@@ -282,7 +295,7 @@ var BaseService = (function () {
             action: 'GetGroupList',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.ModifyGroup = function (data, options) {
@@ -293,7 +306,7 @@ var BaseService = (function () {
             action: 'ModifyGroup',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.CreatePerson = function (data, options) {
@@ -304,7 +317,7 @@ var BaseService = (function () {
             action: 'CreatePerson',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DeletePerson = function (data, options) {
@@ -315,7 +328,7 @@ var BaseService = (function () {
             action: 'DeletePerson',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DeletePersonFromGroup = function (data, options) {
@@ -326,7 +339,7 @@ var BaseService = (function () {
             action: 'DeletePersonFromGroup',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetPersonList = function (data, options) {
@@ -337,7 +350,7 @@ var BaseService = (function () {
             action: 'GetPersonList',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetPersonListNum = function (data, options) {
@@ -348,7 +361,7 @@ var BaseService = (function () {
             action: 'GetPersonListNum',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetPersonBaseInfo = function (data, options) {
@@ -359,7 +372,7 @@ var BaseService = (function () {
             action: 'GetPersonBaseInfo',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GetPersonGroupInfo = function (data, options) {
@@ -370,7 +383,7 @@ var BaseService = (function () {
             action: 'GetPersonGroupInfo',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.ModifyPersonBaseInfo = function (data, options) {
@@ -381,7 +394,7 @@ var BaseService = (function () {
             action: 'ModifyPersonBaseInfo',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.ModifyPersonGroupInfo = function (data, options) {
@@ -392,7 +405,7 @@ var BaseService = (function () {
             action: 'ModifyPersonGroupInfo',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.CreateFace = function (data, options) {
@@ -403,7 +416,7 @@ var BaseService = (function () {
             action: 'CreateFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DeleteFace = function (data, options) {
@@ -414,7 +427,7 @@ var BaseService = (function () {
             action: 'DeleteFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.CopyPerson = function (data, options) {
@@ -425,7 +438,7 @@ var BaseService = (function () {
             action: 'CopyPerson',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.SearchFaces = function (data, options) {
@@ -436,7 +449,7 @@ var BaseService = (function () {
             action: 'SearchFaces',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.VerifyFace = function (data, options) {
@@ -447,7 +460,7 @@ var BaseService = (function () {
             action: 'VerifyFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.DetectLiveFace = function (data, options) {
@@ -458,7 +471,7 @@ var BaseService = (function () {
             action: 'DetectLiveFace',
             version: 'v20180301',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.GeneralBasicOCR = function (data, options) {
@@ -469,7 +482,7 @@ var BaseService = (function () {
             action: 'GeneralBasicOCR',
             version: 'v20181119',
             data: data,
-            options: options,
+            options: options
         });
     };
     BaseService.prototype.IDCardOCR = function (data, options) {
@@ -480,7 +493,7 @@ var BaseService = (function () {
             action: 'IDCardOCR',
             version: 'v20181119',
             data: data,
-            options: options,
+            options: options
         });
     };
     return BaseService;
@@ -493,10 +506,18 @@ var Base = (function () {
         this.version = version;
         this.data = data;
         this.options = options;
-        var ID1 = tcbService.secretID, Key1 = tcbService.secretKey;
-        var ID2 = options.secretID, Key2 = options.secretKey;
-        this.secretID = ID2 || ID1;
-        this.secretKey = Key2 || Key1;
+        var ID1 = tcbService.secretID, Key1 = tcbService.secretKey, Token1 = tcbService.sessionToken;
+        var ID2 = options.secretID, Key2 = options.secretKey, Token2 = options.sessionToken;
+        if (ID2) {
+            this.secretID = ID2;
+            this.secretKey = Key2;
+            this.sessionToken = Token2;
+        }
+        else {
+            this.secretID = ID1;
+            this.secretKey = Key1;
+            this.sessionToken = Token1;
+        }
     }
     return Base;
 }());
@@ -886,11 +907,19 @@ var Utils = (function () {
 var cloud = require('tcb-admin-node');
 var TcbService = (function () {
     function TcbService(_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.secretID, secretID = _c === void 0 ? null : _c, _d = _b.secretKey, secretKey = _d === void 0 ? null : _d, _e = _b.smsAppID, smsAppID = _e === void 0 ? null : _e, _f = _b.smsAppKey, smsAppKey = _f === void 0 ? null : _f, _g = _b.env, env = _g === void 0 ? null : _g;
+        var _b = _a === void 0 ? {} : _a, _c = _b.secretID, secretID = _c === void 0 ? null : _c, _d = _b.secretKey, secretKey = _d === void 0 ? null : _d, _e = _b.sessionToken, sessionToken = _e === void 0 ? null : _e, _f = _b.smsAppID, smsAppID = _f === void 0 ? null : _f, _g = _b.smsAppKey, smsAppKey = _g === void 0 ? null : _g, _h = _b.env, env = _h === void 0 ? null : _h;
         this.cloud = cloud;
         this.env = env;
-        this.secretID = secretID || process.env.TENCENTCLOUD_SECRETID;
-        this.secretKey = secretKey || process.env.TENCENTCLOUD_SECRETKEY;
+        if (secretID) {
+            this.secretID = secretID;
+            this.secretKey = secretKey;
+            this.sessionToken = sessionToken;
+        }
+        else {
+            this.secretID = process.env.TENCENTCLOUD_SECRETID;
+            this.secretKey = process.env.TENCENTCLOUD_SECRETKEY;
+            this.sessionToken = process.env.TENCENTCLOUD_SESSIONTOKEN;
+        }
         this.smsAppID = smsAppID;
         this.smsAppKey = smsAppKey;
         this.cloud.init({

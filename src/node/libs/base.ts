@@ -9,6 +9,7 @@ export default abstract class Base {
 
     protected secretID: string;
     protected secretKey: string;
+    protected sessionToken: string;
 
     public constructor(tcbService, version, action, data, options) {
         this.tcbService = tcbService;
@@ -19,16 +20,26 @@ export default abstract class Base {
 
         let {
             secretID: ID1,
-            secretKey: Key1
+            secretKey: Key1,
+            sessionToken: Token1
         } = tcbService;
 
         let {
             secretID: ID2,
-            secretKey: Key2
+            secretKey: Key2,
+            sessionToken: Token2
         } = options;
 
-        this.secretID = ID2 || ID1;
-        this.secretKey = Key2 || Key1;
+        if (ID2){
+            this.secretID = ID2
+            this.secretKey = Key2
+            this.sessionToken = Token2
+        }
+        else {
+            this.secretID = ID1;
+            this.secretKey = Key1;
+            this.sessionToken = Token1
+        }
     }
 
     public abstract async init()

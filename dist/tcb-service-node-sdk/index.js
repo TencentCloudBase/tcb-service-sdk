@@ -94,7 +94,7 @@ var config = {
     }
 };
 
-var tencentcloud = require('tencentcloud-sdk-nodejs');
+var tencentcloud = require('tencentcloud-sdk-nodejs-beta');
 var Credential = tencentcloud.common.Credential;
 var ClientProfile = tencentcloud.common.ClientProfile;
 var HttpProfile = tencentcloud.common.HttpProfile;
@@ -141,6 +141,9 @@ var BaseService = (function () {
         httpProfile.endpoint = endpoint || config.services[service].url;
         var clientProfile = new ClientProfile();
         clientProfile.httpProfile = httpProfile;
+        if (options.signMethod) {
+            clientProfile.signMethod = options.signMethod;
+        }
         var client = new Client(cred, options.region || 'ap-shanghai', clientProfile);
         var req = new Models[action + "Request"]();
         var reqParams = JSON.stringify(__assign({}, data));
@@ -240,7 +243,7 @@ var BaseService = (function () {
             action: 'DetectFace',
             version: 'v20180301',
             data: data,
-            options: options
+            options: __assign({ signMethod: 'TC3-HMAC-SHA256' }, options)
         });
     };
     BaseService.prototype.AnalyzeFace = function (data, options) {

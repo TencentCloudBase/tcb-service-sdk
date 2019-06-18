@@ -1,6 +1,6 @@
 import config from './config';
 
-const tencentcloud = require('tencentcloud-sdk-nodejs');
+const tencentcloud = require('tencentcloud-sdk-nodejs-beta');
 const Credential = tencentcloud.common.Credential;
 const ClientProfile = tencentcloud.common.ClientProfile;
 const HttpProfile = tencentcloud.common.HttpProfile;
@@ -63,6 +63,9 @@ export default class BaseService {
     httpProfile.endpoint = endpoint || config.services[service].url;
     let clientProfile = new ClientProfile();
     clientProfile.httpProfile = httpProfile;
+    if (options.signMethod) {
+      clientProfile.signMethod = options.signMethod;
+    }
     let client = new Client(
       cred,
       options.region || 'ap-shanghai',
@@ -195,7 +198,10 @@ export default class BaseService {
       action: 'DetectFace',
       version: 'v20180301',
       data,
-      options
+      options: {
+        signMethod: 'TC3-HMAC-SHA256',
+        ...options
+      }
     });
   }
 

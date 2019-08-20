@@ -1,6 +1,6 @@
-import config from './config';
+import config from "./config";
 
-const tencentcloud = require('tencentcloud-sdk-nodejs-beta');
+const tencentcloud = require("tencentcloud-sdk-nodejs-beta");
 const Credential = tencentcloud.common.Credential;
 const ClientProfile = tencentcloud.common.ClientProfile;
 const HttpProfile = tencentcloud.common.HttpProfile;
@@ -43,13 +43,13 @@ export default class BaseService {
     return this;
   }
 
-  init({ action = '', data = {}, options = {} }) {
+  init({ action = "", data = {}, options = {} }) {
     if (!action) {
-      throw new Error('action should not be empty.');
+      throw new Error("action should not be empty.");
     }
 
     if (!this[action]) {
-      throw new Error('action cannot be found.');
+      throw new Error("action cannot be found.");
     }
 
     return this[action](data, options);
@@ -68,7 +68,7 @@ export default class BaseService {
     }
     let client = new Client(
       cred,
-      options.region || 'ap-shanghai',
+      options.region || "ap-shanghai",
       clientProfile
     );
 
@@ -95,11 +95,11 @@ export default class BaseService {
   // 人脸融合
   FaceFusion(data = {}, options = {}) {
     return this.request({
-      service: 'facefusion',
-      action: 'FaceFusion',
-      version: 'v20181201',
+      service: "facefusion",
+      action: "FaceFusion",
+      version: "v20181201",
       data,
-      options
+      options: { signMethod: "TC3-HMAC-SHA256", ...options }
     });
   }
 
@@ -117,9 +117,9 @@ export default class BaseService {
   // 获取动作顺序
   GetActionSequence(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'GetActionSequence',
-      version: 'v20180301',
+      service: "faceid",
+      action: "GetActionSequence",
+      version: "v20180301",
       data,
       options
     });
@@ -128,9 +128,9 @@ export default class BaseService {
   // 获取数字验证码
   GetLiveCode(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'GetLiveCode',
-      version: 'v20180301',
+      service: "faceid",
+      action: "GetLiveCode",
+      version: "v20180301",
       data,
       options
     });
@@ -139,9 +139,9 @@ export default class BaseService {
   // 身份信息认证
   IdCardVerification(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'IdCardVerification',
-      version: 'v20180301',
+      service: "faceid",
+      action: "IdCardVerification",
+      version: "v20180301",
       data,
       options
     });
@@ -150,9 +150,9 @@ export default class BaseService {
   // 照片人脸核身
   ImageRecognition(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'ImageRecognition',
-      version: 'v20180301',
+      service: "faceid",
+      action: "ImageRecognition",
+      version: "v20180301",
       data,
       options
     });
@@ -161,9 +161,9 @@ export default class BaseService {
   // 活体人脸比对
   LivenessCompare(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'LivenessCompare',
-      version: 'v20180301',
+      service: "faceid",
+      action: "LivenessCompare",
+      version: "v20180301",
       data,
       options
     });
@@ -172,9 +172,9 @@ export default class BaseService {
   // 活体人脸核身
   LivenessRecognition(data = {}, options = {}) {
     return this.request({
-      service: 'faceid',
-      action: 'LivenessRecognition',
-      version: 'v20180301',
+      service: "faceid",
+      action: "LivenessRecognition",
+      version: "v20180301",
       data,
       options
     });
@@ -194,12 +194,12 @@ export default class BaseService {
   // 人脸检测与分析
   DetectFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DetectFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "DetectFace",
+      version: "v20180301",
       data,
       options: {
-        signMethod: 'TC3-HMAC-SHA256',
+        signMethod: "TC3-HMAC-SHA256",
         ...options
       }
     });
@@ -208,9 +208,9 @@ export default class BaseService {
   // 五官定位
   AnalyzeFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'AnalyzeFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "AnalyzeFace",
+      version: "v20180301",
       data,
       options
     });
@@ -219,9 +219,9 @@ export default class BaseService {
   // 人脸对比
   CompareFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'CompareFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "CompareFace",
+      version: "v20180301",
       data,
       options
     });
@@ -230,9 +230,9 @@ export default class BaseService {
   // 创建人员库
   CreateGroup(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'CreateGroup',
-      version: 'v20180301',
+      service: "iai",
+      action: "CreateGroup",
+      version: "v20180301",
       data,
       options
     });
@@ -241,9 +241,9 @@ export default class BaseService {
   // 删除人员库
   DeleteGroup(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DeleteGroup',
-      version: 'v20180301',
+      service: "iai",
+      action: "DeleteGroup",
+      version: "v20180301",
       data,
       options
     });
@@ -252,9 +252,9 @@ export default class BaseService {
   // 获取人员列表
   GetGroupList(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'GetGroupList',
-      version: 'v20180301',
+      service: "iai",
+      action: "GetGroupList",
+      version: "v20180301",
       data,
       options
     });
@@ -263,9 +263,9 @@ export default class BaseService {
   // 修改人员库
   ModifyGroup(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'ModifyGroup',
-      version: 'v20180301',
+      service: "iai",
+      action: "ModifyGroup",
+      version: "v20180301",
       data,
       options
     });
@@ -274,9 +274,9 @@ export default class BaseService {
   // 创建人员
   CreatePerson(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'CreatePerson',
-      version: 'v20180301',
+      service: "iai",
+      action: "CreatePerson",
+      version: "v20180301",
       data,
       options
     });
@@ -285,9 +285,9 @@ export default class BaseService {
   // 删除人员
   DeletePerson(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DeletePerson',
-      version: 'v20180301',
+      service: "iai",
+      action: "DeletePerson",
+      version: "v20180301",
       data,
       options
     });
@@ -296,9 +296,9 @@ export default class BaseService {
   // 人员库删除人员
   DeletePersonFromGroup(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DeletePersonFromGroup',
-      version: 'v20180301',
+      service: "iai",
+      action: "DeletePersonFromGroup",
+      version: "v20180301",
       data,
       options
     });
@@ -307,9 +307,9 @@ export default class BaseService {
   // 获取人员列表
   GetPersonList(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'GetPersonList',
-      version: 'v20180301',
+      service: "iai",
+      action: "GetPersonList",
+      version: "v20180301",
       data,
       options
     });
@@ -318,9 +318,9 @@ export default class BaseService {
   // 获取人员列表长度
   GetPersonListNum(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'GetPersonListNum',
-      version: 'v20180301',
+      service: "iai",
+      action: "GetPersonListNum",
+      version: "v20180301",
       data,
       options
     });
@@ -329,9 +329,9 @@ export default class BaseService {
   // 获取人员基础信息
   GetPersonBaseInfo(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'GetPersonBaseInfo',
-      version: 'v20180301',
+      service: "iai",
+      action: "GetPersonBaseInfo",
+      version: "v20180301",
       data,
       options
     });
@@ -340,9 +340,9 @@ export default class BaseService {
   // 获取人员归属信息
   GetPersonGroupInfo(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'GetPersonGroupInfo',
-      version: 'v20180301',
+      service: "iai",
+      action: "GetPersonGroupInfo",
+      version: "v20180301",
       data,
       options
     });
@@ -351,9 +351,9 @@ export default class BaseService {
   // 修改人员基础信息
   ModifyPersonBaseInfo(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'ModifyPersonBaseInfo',
-      version: 'v20180301',
+      service: "iai",
+      action: "ModifyPersonBaseInfo",
+      version: "v20180301",
       data,
       options
     });
@@ -362,9 +362,9 @@ export default class BaseService {
   // 修改人员描述信息
   ModifyPersonGroupInfo(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'ModifyPersonGroupInfo',
-      version: 'v20180301',
+      service: "iai",
+      action: "ModifyPersonGroupInfo",
+      version: "v20180301",
       data,
       options
     });
@@ -373,9 +373,9 @@ export default class BaseService {
   // 增加人脸
   CreateFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'CreateFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "CreateFace",
+      version: "v20180301",
       data,
       options
     });
@@ -384,9 +384,9 @@ export default class BaseService {
   // 删除人脸
   DeleteFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DeleteFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "DeleteFace",
+      version: "v20180301",
       data,
       options
     });
@@ -395,9 +395,9 @@ export default class BaseService {
   // 复制人员
   CopyPerson(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'CopyPerson',
-      version: 'v20180301',
+      service: "iai",
+      action: "CopyPerson",
+      version: "v20180301",
       data,
       options
     });
@@ -406,9 +406,9 @@ export default class BaseService {
   // 人脸搜索
   SearchFaces(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'SearchFaces',
-      version: 'v20180301',
+      service: "iai",
+      action: "SearchFaces",
+      version: "v20180301",
       data,
       options
     });
@@ -417,9 +417,9 @@ export default class BaseService {
   // 人脸验证
   VerifyFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'VerifyFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "VerifyFace",
+      version: "v20180301",
       data,
       options
     });
@@ -428,9 +428,9 @@ export default class BaseService {
   // 人脸静态活体检测
   DetectLiveFace(data = {}, options = {}) {
     return this.request({
-      service: 'iai',
-      action: 'DetectLiveFace',
-      version: 'v20180301',
+      service: "iai",
+      action: "DetectLiveFace",
+      version: "v20180301",
       data,
       options
     });
@@ -439,9 +439,9 @@ export default class BaseService {
   // 通用印刷体识别
   GeneralBasicOCR(data = {}, options = {}) {
     return this.request({
-      service: 'ocr',
-      action: 'GeneralBasicOCR',
-      version: 'v20181119',
+      service: "ocr",
+      action: "GeneralBasicOCR",
+      version: "v20181119",
       data,
       options
     });
@@ -450,9 +450,9 @@ export default class BaseService {
   // 身份证识别
   IDCardOCR(data = {}, options = {}) {
     return this.request({
-      service: 'ocr',
-      action: 'IDCardOCR',
-      version: 'v20181119',
+      service: "ocr",
+      action: "IDCardOCR",
+      version: "v20181119",
       data,
       options
     });

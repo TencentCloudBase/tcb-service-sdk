@@ -94,7 +94,7 @@ var config = {
     }
 };
 
-var tencentcloud = require('tencentcloud-sdk-nodejs-beta');
+var tencentcloud = require("tencentcloud-sdk-nodejs-beta");
 var Credential = tencentcloud.common.Credential;
 var ClientProfile = tencentcloud.common.ClientProfile;
 var HttpProfile = tencentcloud.common.HttpProfile;
@@ -123,12 +123,12 @@ var BaseService = (function () {
         return this;
     };
     BaseService.prototype.init = function (_a) {
-        var _b = _a.action, action = _b === void 0 ? '' : _b, _c = _a.data, data = _c === void 0 ? {} : _c, _d = _a.options, options = _d === void 0 ? {} : _d;
+        var _b = _a.action, action = _b === void 0 ? "" : _b, _c = _a.data, data = _c === void 0 ? {} : _c, _d = _a.options, options = _d === void 0 ? {} : _d;
         if (!action) {
-            throw new Error('action should not be empty.');
+            throw new Error("action should not be empty.");
         }
         if (!this[action]) {
-            throw new Error('action cannot be found.');
+            throw new Error("action cannot be found.");
         }
         return this[action](data, options);
     };
@@ -144,7 +144,7 @@ var BaseService = (function () {
         if (options.signMethod) {
             clientProfile.signMethod = options.signMethod;
         }
-        var client = new Client(cred, options.region || 'ap-shanghai', clientProfile);
+        var client = new Client(cred, options.region || "ap-shanghai", clientProfile);
         var req = new Models[action + "Request"]();
         var reqParams = JSON.stringify(__assign({}, data));
         req.from_json_string(reqParams);
@@ -162,20 +162,20 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'facefusion',
-            action: 'FaceFusion',
-            version: 'v20181201',
+            service: "facefusion",
+            action: "FaceFusion",
+            version: "v20181201",
             data: data,
-            options: options
+            options: __assign({ signMethod: "TC3-HMAC-SHA256" }, options)
         });
     };
     BaseService.prototype.GetActionSequence = function (data, options) {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'GetActionSequence',
-            version: 'v20180301',
+            service: "faceid",
+            action: "GetActionSequence",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -184,9 +184,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'GetLiveCode',
-            version: 'v20180301',
+            service: "faceid",
+            action: "GetLiveCode",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -195,9 +195,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'IdCardVerification',
-            version: 'v20180301',
+            service: "faceid",
+            action: "IdCardVerification",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -206,9 +206,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'ImageRecognition',
-            version: 'v20180301',
+            service: "faceid",
+            action: "ImageRecognition",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -217,9 +217,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'LivenessCompare',
-            version: 'v20180301',
+            service: "faceid",
+            action: "LivenessCompare",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -228,9 +228,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'faceid',
-            action: 'LivenessRecognition',
-            version: 'v20180301',
+            service: "faceid",
+            action: "LivenessRecognition",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -239,20 +239,20 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DetectFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "DetectFace",
+            version: "v20180301",
             data: data,
-            options: __assign({ signMethod: 'TC3-HMAC-SHA256' }, options)
+            options: __assign({ signMethod: "TC3-HMAC-SHA256" }, options)
         });
     };
     BaseService.prototype.AnalyzeFace = function (data, options) {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'AnalyzeFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "AnalyzeFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -261,9 +261,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'CompareFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "CompareFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -272,9 +272,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'CreateGroup',
-            version: 'v20180301',
+            service: "iai",
+            action: "CreateGroup",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -283,9 +283,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DeleteGroup',
-            version: 'v20180301',
+            service: "iai",
+            action: "DeleteGroup",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -294,9 +294,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'GetGroupList',
-            version: 'v20180301',
+            service: "iai",
+            action: "GetGroupList",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -305,9 +305,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'ModifyGroup',
-            version: 'v20180301',
+            service: "iai",
+            action: "ModifyGroup",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -316,9 +316,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'CreatePerson',
-            version: 'v20180301',
+            service: "iai",
+            action: "CreatePerson",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -327,9 +327,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DeletePerson',
-            version: 'v20180301',
+            service: "iai",
+            action: "DeletePerson",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -338,9 +338,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DeletePersonFromGroup',
-            version: 'v20180301',
+            service: "iai",
+            action: "DeletePersonFromGroup",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -349,9 +349,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'GetPersonList',
-            version: 'v20180301',
+            service: "iai",
+            action: "GetPersonList",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -360,9 +360,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'GetPersonListNum',
-            version: 'v20180301',
+            service: "iai",
+            action: "GetPersonListNum",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -371,9 +371,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'GetPersonBaseInfo',
-            version: 'v20180301',
+            service: "iai",
+            action: "GetPersonBaseInfo",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -382,9 +382,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'GetPersonGroupInfo',
-            version: 'v20180301',
+            service: "iai",
+            action: "GetPersonGroupInfo",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -393,9 +393,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'ModifyPersonBaseInfo',
-            version: 'v20180301',
+            service: "iai",
+            action: "ModifyPersonBaseInfo",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -404,9 +404,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'ModifyPersonGroupInfo',
-            version: 'v20180301',
+            service: "iai",
+            action: "ModifyPersonGroupInfo",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -415,9 +415,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'CreateFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "CreateFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -426,9 +426,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DeleteFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "DeleteFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -437,9 +437,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'CopyPerson',
-            version: 'v20180301',
+            service: "iai",
+            action: "CopyPerson",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -448,9 +448,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'SearchFaces',
-            version: 'v20180301',
+            service: "iai",
+            action: "SearchFaces",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -459,9 +459,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'VerifyFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "VerifyFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -470,9 +470,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'iai',
-            action: 'DetectLiveFace',
-            version: 'v20180301',
+            service: "iai",
+            action: "DetectLiveFace",
+            version: "v20180301",
             data: data,
             options: options
         });
@@ -481,9 +481,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'ocr',
-            action: 'GeneralBasicOCR',
-            version: 'v20181119',
+            service: "ocr",
+            action: "GeneralBasicOCR",
+            version: "v20181119",
             data: data,
             options: options
         });
@@ -492,9 +492,9 @@ var BaseService = (function () {
         if (data === void 0) { data = {}; }
         if (options === void 0) { options = {}; }
         return this.request({
-            service: 'ocr',
-            action: 'IDCardOCR',
-            version: 'v20181119',
+            service: "ocr",
+            action: "IDCardOCR",
+            version: "v20181119",
             data: data,
             options: options
         });

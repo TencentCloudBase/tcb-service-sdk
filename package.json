@@ -1,6 +1,6 @@
 {
   "name": "tcb-service-sdk",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.1-beta.1",
   "description": "tcb js sdk for AI service",
   "main": "dist/tcb-service-node-sdk/index.js",
   "scripts": {

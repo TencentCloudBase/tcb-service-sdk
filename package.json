@@ -44,7 +44,7 @@
     "node": ">=8.6.0"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "qcloudsms_js": "^0.1.1",
     "tcb-admin-node": "^1.4.3",
     "tencentcloud-sdk-nodejs": "^3.0.46"
